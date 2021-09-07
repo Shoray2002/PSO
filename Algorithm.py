@@ -25,7 +25,7 @@ class Particle:
     def update_velocity(self, pos_best_g):
         # constant inertia weight (how much to weigh the previous velocity)
         w = 0.5
-        c1 = 1        # cognative constant
+        c1 = 1        # cognitive constant
         c2 = 2        # social constant
 
         for i in range(0, num_dimensions):
@@ -86,7 +86,8 @@ def minimize(costFunc, x0, constraints, num_particles, maxiter, verbose=False):
         print(f'\nOptimal Solution after {i} iterations:')
         print(f'   > {err_best_g:10.18f}\n')
         print(f'Found at: ')
-        print(f'   > x1: {pos_best_g[0]:10.18f}')
-        print(f'   > x2: {pos_best_g[1]:10.18f}')
+        for i in range(0, num_dimensions):
+            print(f'   > x{i+1}:{pos_best_g[i]:10.18f}')
+         
 
     return err_best_g, pos_best_g
